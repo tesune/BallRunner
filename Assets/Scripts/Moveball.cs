@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -12,20 +13,20 @@ public class Moveball : MonoBehaviour
     public Text coincount;
     public AudioSource audioSource;
     public AudioClip audioClip;
-    
-    // Start is called before the first frame update
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
         _counter = 20;
-
         coincount.text = "Coins Remaining: " + _counter;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         float hmove = Input.GetAxis("Horizontal");
         float vmove = Input.GetAxis("Vertical");
 
